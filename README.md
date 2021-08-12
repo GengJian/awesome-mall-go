@@ -29,9 +29,9 @@ SQL，即Structured Query Language的缩写，是一种特定目的编程语言�
 
 ## 安装教程
 
-1.  xxxx
-2.  xxxx
-3.  xxxx
+1. `git clone https://xxx.git` 此项目并使用相关IDE打开(推荐GoLand)；
+2. `go mod tidy` 下载包依赖
+3. `go run main.go` 执行main函数
 
 ## 使用说明
 
