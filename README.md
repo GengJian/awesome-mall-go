@@ -1,11 +1,29 @@
 # awesome-mall-server-go
+> 毛泽东同志讲过，"实践出真知"，说明了真正的知识只有从实践中获得。  
+> 习近平总书记说过，"调查研究是谋事之基、成事之道，没有调查，就没有发言权。"
+>   
+> 所以我们通过"从零搭建电商系统"实现对golang语言的学习，并梳理电商平台的业务流程。
+> 
+> 
 
 #### 介绍
 基于gin编写golang版本的电子商城服务端
+## 项目目录
+#### go.mod 项目依赖包管理
+#### main.go 项目主入口
+#### db 数据查询文件相关
+SQL，即Structured Query Language的缩写，是一种特定目的编程语言，用于管理关系数据库管理系统（RDBMS）。该目录存放相关 sql语句文件，可以通过Navicat等数据库操作软件直接执行。
+#### dao 数据访问相关
+在传统的多层应用程序中，通常是Web层调用业务层，业务层调用数据访问层。业务层负责处理各种业务逻辑，而数据访问层只负责对数据进行增删改查。
 
 #### 软件架构
 软件架构说明
+编写数据访问层的时候，可以使用DAO模式。DAO即Data Access Object的缩写，即数据访问层 。
 
+#### service 服务
+#### route 路由
+#### model 数据模型
+#### handler 处理工具类
 
 #### 安装教程
 
@@ -35,3 +53,6 @@
 4.  [GVP](https://gitee.com/gvp) 全称是 Gitee 最有价值开源项目，是综合评定出的优秀开源项目
 5.  Gitee 官方提供的使用手册 [https://gitee.com/help](https://gitee.com/help)
 6.  Gitee 封面人物是一档用来展示 Gitee 会员风采的栏目 [https://gitee.com/gitee-stars/](https://gitee.com/gitee-stars/)
+## 概念说明
+#### dll  
+初始化脚本，比如创建数据的.sql文件，放至git仓库中便于版本管理。
