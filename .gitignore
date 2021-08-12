@@ -14,5 +14,8 @@
 # Dependency directories (remove the comment below to include it)
 # vendor/
 
+#ide生成的文件
 .idea
 .vscode
+# docker-compose生成的文件
+.docker/db
