@@ -7,4 +7,5 @@ import (
 
 func RegisterRoute(g *gin.Engine) {
 	g.POST("/user/login", handler.Login)
+	g.POST("/user/register", handler.Register)
 }
