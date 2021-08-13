@@ -1,17 +1,17 @@
 /*
  Navicat Premium Data Transfer
 
- Source Server         : master101
- Source Server Type    : MySQL
- Source Server Version : 80023
- Source Host           : 127.0.0.1:3306
- Source Schema         : user
+ Source Server         : malldb
+ Source Server Type    : MariaDB
+ Source Server Version : 100604
+ Source Host           : localhost:3306
+ Source Schema         : malldb
 
- Target Server Type    : MySQL
- Target Server Version : 80023
+ Target Server Type    : MariaDB
+ Target Server Version : 100604
  File Encoding         : 65001
 
- Date: 12/08/2021 17:51:06
+ Date: 13/08/2021 11:14:04
 */
 
 SET NAMES utf8mb4;
@@ -21,16 +21,26 @@ SET FOREIGN_KEY_CHECKS = 0;
 -- Table structure for user_info
 -- ----------------------------
 DROP TABLE IF EXISTS `user_info`;
-CREATE TABLE `user_info`  (
-  `id` bigint(0) NOT NULL AUTO_INCREMENT COMMENT '用户ID',
-  `name` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '用户名',
-  `age` int(0) NULL DEFAULT NULL COMMENT '年龄',
-  `sex` tinyint(0) NULL DEFAULT NULL COMMENT '性别',
-  `avatar` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '头像',
-  `password` varchar(255) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NULL DEFAULT NULL COMMENT '密码',
-  `create_time` datetime(0) NULL DEFAULT NULL,
-  `update_time` datetime(0) NULL DEFAULT NULL,
-  PRIMARY KEY (`id`) USING BTREE
-) ENGINE = InnoDB CHARACTER SET = utf8mb4 COLLATE = utf8mb4_0900_ai_ci ROW_FORMAT = Dynamic;
+CREATE TABLE `user_info`
+(
+    `id`          bigint(20)                     NOT NULL AUTO_INCREMENT COMMENT '用户序号',
+    `first_name`  varchar(255)                            DEFAULT '' COMMENT '用户名字',
+    `last_name`   varchar(255)                            DEFAULT NULL COMMENT '用户姓氏',
+    `phone`       varchar(255)                            DEFAULT NULL COMMENT '手机号',
+    `age`         tinyint(255) unsigned zerofill NOT NULL COMMENT '年龄',
+    `sex`         tinyint(255)                            DEFAULT NULL COMMENT '性别',
+    `avatar`      varchar(255)                            DEFAULT NULL COMMENT '头像',
+    `password`    varchar(255)                            DEFAULT NULL COMMENT '登录密码',
+    `create_time` datetime                       NOT NULL COMMENT '创建时间',
+    `update_time` datetime                       NOT NULL DEFAULT '0000-00-00 00:00:00' ON UPDATE current_timestamp() COMMENT '更新时间',
+    PRIMARY KEY (`id`)
+) ENGINE = InnoDB
+  DEFAULT CHARSET = utf8mb4;
+
+-- ----------------------------
+-- Records of user_info
+-- ----------------------------
+BEGIN;
+COMMIT;
 
 SET FOREIGN_KEY_CHECKS = 1;
