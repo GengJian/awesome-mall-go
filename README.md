@@ -52,7 +52,7 @@ SQL，即Structured Query Language的缩写，是一种特定目的编程语言�
 
 ## 参考链接
 1. [Go操作MySQL](https://www.cnblogs.com/nickchen121/p/11517430.html)
-2. 
+2. [Gin框架简介](http://www.topgoer.com/gin%E6%A1%86%E6%9E%B6/)
 
 ## 特技
 
