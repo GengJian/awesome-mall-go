@@ -11,10 +11,10 @@ type BasicResponse struct {
 }
 
 var (
-	Err10001 = NewRespError(10001, "查询用户信息失败")
-	Err10002 = NewRespError(10002, "用户名或密码错误")
-	Err10003 = NewRespError(10003, "新增用户失败")
-	Err10004 = NewRespError(10004, "系统异常")
+	ErrQueryUser   = NewRespError(10001, "查询用户信息失败")
+	ErrWrongPasswd = NewRespError(10002, "用户名或密码错误")
+	ErrAddUser     = NewRespError(10003, "新增用户失败")
+	ErrInternal    = NewRespError(10004, "系统异常")
 )
 
 func NewRespError(status int, msg string, data ...interface{}) error {
