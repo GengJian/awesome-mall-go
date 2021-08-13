@@ -17,8 +17,11 @@ func Login(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"msg": "bad param", "errorCode": err.Error()})
 		return
 	}
-	result := services.Login(req)
-
+	result, err := services.Login(req)
+	if err != nil {
+		Failed(ctx, err)
+		return
+	}
 	ctx.JSON(http.StatusOK, result)
 }
 
@@ -30,6 +33,10 @@ func Register(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"msg": "bad param", "errorCode": err.Error()})
 		return
 	}
-	result := services.Register(req)
-	ctx.JSON(http.StatusOK, result)
+	result, err := services.Register(req)
+	if err != nil {
+		Failed(ctx, err)
+		return
+	}
+	Success(ctx, result)
 }
