@@ -19,3 +19,4 @@
 .vscode
 # docker-compose生成的文件
 .docker/db
+.docker/config
