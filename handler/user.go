@@ -3,6 +3,9 @@ package handler
 import (
 	"net/http"
 
+	"github.com/cold-farmer/awesome-mall/common/log"
+	"go.uber.org/zap"
+
 	"github.com/cold-farmer/awesome-mall/model"
 	"github.com/cold-farmer/awesome-mall/services"
 
@@ -14,10 +17,11 @@ func Login(ctx *gin.Context) {
 	var req model.LoginRequest
 	err := ctx.BindJSON(&req)
 	if err != nil {
+		log.Debug(ctx, "xxx", zap.Error(err))
 		ctx.JSON(http.StatusOK, gin.H{"msg": "bad param", "errorCode": err.Error()})
 		return
 	}
-	result, err := services.Login(req)
+	result, err := services.Login(ctx, req)
 	if err != nil {
 		Failed(ctx, err)
 		return
@@ -33,7 +37,7 @@ func Register(ctx *gin.Context) {
 		ctx.JSON(http.StatusOK, gin.H{"msg": "bad param", "errorCode": err.Error()})
 		return
 	}
-	result, err := services.Register(req)
+	result, err := services.Register(ctx, req)
 	if err != nil {
 		Failed(ctx, err)
 		return
