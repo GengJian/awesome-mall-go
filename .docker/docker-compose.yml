@@ -26,35 +26,35 @@ services:
 #            - 1000:1000
 #        volumes:
 #            - ./data/ngrok:/myfiles hteen/ngrok
-    mysql:
-        image: mysql:latest
-        container_name: mysql
-        ports:
-            - 3306:3306
-        environment:
-            MYSQL_ROOT_PASSWORD: 123456
-        volumes:
-            - "./db/mysql/data:/var/lib/mysql"           # 挂载数据目录
-            - "./db/mysql/config:/etc/mysql/conf.d"      # 挂载配置文件目录
-#    mariadb: # mysql 没有arm64位环境，使用mariadb替代
-#        restart: always
-#        image: mariadb
-#        container_name: mariadb
-#        volumes:
-#            # 容器与宿主机时间同步
-#            - /etc/localtime:/etc/localtime
-#            # 数据库目录映射
-#            - ./config/data/mariadb:/var/lib/mysql
-#            # （不推荐）数据库配置文件映射（如果需要自己配置的话打开--他会覆盖docker容器中的配置文件夹-如果是空文件夹那么会把容器内的配置文件全都替换成空）
-#            #- ./config/data/mariadb-config/my.cnf:/etc/mysql/my.cnf
-#            # （推荐）如果要使用自定义的MySQL配置，则可以在主机上的目录中创建备用配置文件，然后将该目录位置/etc/mysql/conf.d安装在mariadb容器内。自己所需的配置文件可以放在自己服务器./config/data/mariadb-config里面，
-#            - ./config/data/mariadb-config:/etc/mysql/conf.d
-#        environment:
-#                - "MYSQL_ROOT_PASSWORD=123456"
-#                - "MYSQL_DATABASE=mydb"
-#                - "TZ=Asia/Shanghai"
+#    mysql:
+#        image: mysql:latest
+#        container_name: mysql
 #        ports:
 #            - 3306:3306
+#        environment:
+#            MYSQL_ROOT_PASSWORD: 123456
+#        volumes:
+#            - "./db/mysql/data:/var/lib/mysql"           # 挂载数据目录
+#            - "./db/mysql/config:/etc/mysql/conf.d"      # 挂载配置文件目录
+    mariadb: # mysql 没有arm64位环境，在M1上使用mariadb替代
+        restart: always
+        image: mariadb
+        container_name: mariadb
+        volumes:
+            # 容器与宿主机时间同步
+            - /etc/localtime:/etc/localtime
+            # 数据库目录映射
+            - ./config/data/mariadb:/var/lib/mysql
+            # （不推荐）数据库配置文件映射（如果需要自己配置的话打开--他会覆盖docker容器中的配置文件夹-如果是空文件夹那么会把容器内的配置文件全都替换成空）
+            #- ./config/data/mariadb-config/my.cnf:/etc/mysql/my.cnf
+            # （推荐）如果要使用自定义的MySQL配置，则可以在主机上的目录中创建备用配置文件，然后将该目录位置/etc/mysql/conf.d安装在mariadb容器内。自己所需的配置文件可以放在自己服务器./config/data/mariadb-config里面，
+            - ./config/data/mariadb-config:/etc/mysql/conf.d
+        environment:
+                - "MYSQL_ROOT_PASSWORD=123456"
+                - "MYSQL_DATABASE=mydb"
+                - "TZ=Asia/Shanghai"
+        ports:
+            - 3306:3306
 #    redis:
 #        image: redis
 #        container_name: redis
